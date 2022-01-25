@@ -1,32 +1,33 @@
-#!/usr/bin/python3
 import socket
-import os
 
 HOST = 'localhost'
-PORT = 50004
+PORT = 50000
 sum = 0
+conexão = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
-address = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-
-address.connect((HOST, PORT))
-
+conexão.connect((HOST, PORT))
 print('Para sair digite SAIR')
 
-msg = input('Digite uma mensagem: ')
+try:
 
-while msg != SAIR:
+  while True:
 
-	msg = input('Digite uma mensagem: ')
-	msg = msg.encode('utf-8')
-	address.send(msg)  # envia as mensagens para o servidor
-	print(msg)
-	msg = input('Digite uma mensagem: ')
-	sum +=1
-	print(sum) 
-	if sum > 4: 
-	     entrada = address.recv(1024)
-	     entrada = entrada.decode('utf-8')
-	     print('as 5 últimas mensagens são:',entrada)
-a.close()
+	  msg = input('Digite a mensagem: ')
+
+    if msg == sair.upper():
+      print('Finalizando conexão')
+      break
+
+	  msg = msg.encode('utf-8')
+	  conexão.send(msg)
+	  print(msg)
+	  sum +=1 
+
+	  if sum >4:
+	      entrada = conexão.recv(1024)
+	      entrada = entrada.decode('utf-8')
+	      print(entrada)
+
+  conexão.close()
 
 
